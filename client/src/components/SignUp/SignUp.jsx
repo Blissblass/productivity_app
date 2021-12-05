@@ -16,7 +16,7 @@ const SignUp = (props) => {
     fetch('/users', {
       method: 'POST',
       headers: new Headers({'Content-Type': 'application/json'}),
-      body: data
+      body: JSON.stringify(data)
     })
       .then(res => res.json())
       .then(res => console.log(res));
