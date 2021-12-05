@@ -6,16 +6,21 @@ const SignUp = (props) => {
 
     const targets = [...e.currentTarget.children].map(child => child.value);
     const data = {
-      username: targets[0],
-      email: targets[1],
-      password: targets[2],
-      password_confirmation: targets[3]
+      user: {
+        username: targets[0],
+        email: targets[1],
+        password: targets[2],
+        password_confirmation: targets[3]
+      }
     }
     console.log(data);
 
     fetch('/users', {
       method: 'POST',
-      headers: new Headers({'Content-Type': 'application/json'}),
+      headers: new Headers({
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      }),
       body: JSON.stringify(data)
     })
       .then(res => res.json())
