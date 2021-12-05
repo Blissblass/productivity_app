@@ -13,11 +13,14 @@ const SignUp = (props) => {
     }
     console.log(data);
 
-    // fetch('127.0.0.1:3001/users', {
-    //   method: 'POST',
-    //   headers: new Headers({'Content-Type': 'application/json'}),
-    //   body: data
-    // });
+    fetch('/users', {
+      method: 'POST',
+      headers: new Headers({'Content-Type': 'application/json'}),
+      body: data
+    })
+      .then(res => res.json())
+      .then(res => console.log(res));
+
   };
 
   return(
