@@ -9,12 +9,7 @@ import UserContext from './components/Contexts/UserContext';
 import { useEffect, useState } from 'react';
 
 const App = () => {
-
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')))
-
-  useEffect(() => {
-    console.log(user);
-  }, []);
 
   return(
   <div>
