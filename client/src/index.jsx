@@ -6,7 +6,8 @@ import NaviBar from './components/Navbar/Navibar.jsx';
 import SignUp from './components/SignUp/SignUp';
 import Login from './components/Login/Login';
 import UserContext from './components/Contexts/UserContext';
-import { useEffect, useState } from 'react';
+import ProtectedRoute from './components/Routes/ProtectedRoute';
+import { useState } from 'react';
 
 const App = () => {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')))
@@ -17,7 +18,7 @@ const App = () => {
       <UserContext.Provider value={{user, setUser}}>
         <NaviBar />
         <Routes>
-          <Route exact path="/" element={<Home />} />
+          <Route exact path="/" element={<ProtectedRoute element={<Home />} user={user} />} />
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/signUp" element={<SignUp />} />
         </Routes>
