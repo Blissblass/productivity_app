@@ -5,7 +5,12 @@ import { useContext } from 'react';
 
 
 const NaviBar = (props) => {
-  const { user } = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
+
+  const handleSignOut = () => {
+    setUser(null);
+    localStorage.removeItem('user');
+  };
 
   return(
     <nav className="navbar navbar-expand-lg navbar-dark bg-primary">  
@@ -23,7 +28,7 @@ const NaviBar = (props) => {
           <Link to="/user">
             <h3 className="text-white m-1 ms-3">{user.username}</h3>
           </Link>
-          <Link to="/login">
+          <Link to="/login" onClick={handleSignOut}>
             <h3 className="text-white m-1 ms-5 me-4">Log Out</h3>
           </Link>
         </div>
