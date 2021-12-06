@@ -1,14 +1,7 @@
-
 import { RiLeafLine } from 'react-icons/ri';
 import { Link } from 'react-router-dom';
 
-const NavbarButtonUser = (props) => {
-  const { user, setUser } = props;
-
-  const handleSignOut = () => {
-    setUser(null);
-    localStorage.removeItem('user');
-  };
+const NavbarButton = () => {
 
   return(
     <div className="w-100 d-flex justify-content-between align-items-center">
@@ -21,15 +14,15 @@ const NavbarButtonUser = (props) => {
       </Link>
     </div>
     <div className="d-flex algin-items-center">
-      <Link to="/user">
-        <h3 className="text-white m-1 ms-3">{user.username}</h3>
+      <Link to="/login">
+        <h3 className="text-white m-1 ms-3">Login</h3>
       </Link>
-      <Link to="/login" onClick={handleSignOut}>
-        <h3 className="text-white m-1 ms-5 me-4">Log Out</h3>
+      <Link to="/signUp">
+        <h3 className="text-white m-1 ms-5 me-4">Sign Up</h3>
       </Link>
     </div>
   </div>
   )
 };
 
-export default NavbarButtonUser;
+export default NavbarButton;
