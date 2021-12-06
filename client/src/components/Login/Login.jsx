@@ -1,5 +1,8 @@
+import { useContext } from 'react';
+import UserContext from '../Contexts/UserContext';
 
 const Login = (props) => {
+  const { setUser } = useContext(UserContext);
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -20,7 +23,13 @@ const Login = (props) => {
       body: JSON.stringify(data)
     })
       .then(res => res.json())
-      .then(res => console.log(res))
+      .then(userData => {
+        console.log(userData); 
+        if(userData.id) { // Check if server returned a user object or an error object (error objects don't have an ID)
+          localStorage.setItem('user', JSON.stringify(userData)); 
+          setUser(userData); 
+        }
+      })
   };
 
   return(

@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom';
 import { RiLeafLine } from 'react-icons/ri';
+import UserContext from '../Contexts/UserContext';
+
 
 const NaviBar = (props) => {
 

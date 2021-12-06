@@ -6,7 +6,7 @@ import NaviBar from './components/Navbar/Navibar.jsx';
 import SignUp from './components/SignUp/SignUp';
 import Login from './components/Login/Login';
 import UserContext from './components/Contexts/UserContext';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const App = () => {
 

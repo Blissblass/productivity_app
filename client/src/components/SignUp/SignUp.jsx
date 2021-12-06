@@ -1,3 +1,5 @@
+import UserContext from '../Contexts/UserContext';
+
 
 const SignUp = (props) => {
 
