@@ -7,6 +7,7 @@ import SignUp from './components/SignUp/SignUp';
 import Login from './components/Login/Login';
 import UserContext from './components/Contexts/UserContext';
 import ProtectedRoute from './components/Routes/ProtectedRoute';
+import AuthRoute from './components/Routes/AuthRoute';
 import { useState } from 'react';
 
 const App = () => {
@@ -19,8 +20,8 @@ const App = () => {
         <NaviBar />
         <Routes>
           <Route exact path="/" element={<ProtectedRoute element={<Home />} user={user} />} />
-          <Route exact path="/login" element={<Login />} />
-          <Route exact path="/signUp" element={<SignUp />} />
+          <Route exact path="/login" element={<AuthRoute element={<Login />} user={user} />} />
+          <Route exact path="/signUp" element={<AuthRoute element={<SignUp />} user={user} />} />
         </Routes>
       </UserContext.Provider>
     </Router>

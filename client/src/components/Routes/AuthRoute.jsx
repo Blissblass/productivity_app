@@ -6,3 +6,5 @@ const AuthRoute = (props) => {
     props.user? <Navigate to="/" /> : props.element
   )
 };
+
+export default AuthRoute;
