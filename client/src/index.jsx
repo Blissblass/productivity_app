@@ -6,7 +6,9 @@ import NaviBar from './components/Navbar/Navibar.jsx';
 import SignUp from './components/SignUp/SignUp';
 import Login from './components/Login/Login';
 
-ReactDOM.render(
+const App = () => {
+
+  return(
   <div>
     <Router>
       <NaviBar />
@@ -16,6 +18,11 @@ ReactDOM.render(
         <Route exact path="/signUp" element={<SignUp />} />
       </Routes>
     </Router>
-  </div>,
+  </div>
+  )
+};
+
+ReactDOM.render(
+  <App />,
   document.getElementById('root')
 );
