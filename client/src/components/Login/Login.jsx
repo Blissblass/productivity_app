@@ -6,6 +6,7 @@ const Login = (props) => {
 
   const handleLogin = (e) => {
     e.preventDefault();
+    
     const targets = [...e.currentTarget.children].map(child => child.value);
     const data ={
       user:{

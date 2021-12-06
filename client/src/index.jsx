@@ -12,6 +12,10 @@ const App = () => {
 
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')))
 
+  useEffect(() => {
+    console.log(user);
+  }, []);
+
   return(
   <div>
     <Router>

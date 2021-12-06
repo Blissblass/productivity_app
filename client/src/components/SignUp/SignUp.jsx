@@ -1,7 +1,8 @@
+import { useContext } from 'react';
 import UserContext from '../Contexts/UserContext';
 
-
 const SignUp = (props) => {
+  const { setUser } = useContext(UserContext);
 
   const handleSignUp = (e) => {
     e.preventDefault();
@@ -15,7 +16,6 @@ const SignUp = (props) => {
         password_confirmation: targets[3]
       }
     }
-    console.log(data);
 
     fetch('/users', {
       method: 'POST',
@@ -26,7 +26,13 @@ const SignUp = (props) => {
       body: JSON.stringify(data)
     })
       .then(res => res.json())
-      .then(res => console.log(res));
+      .then(userData => {
+        console.log(userData);
+        if(userData.id) { // Check if server returned a user object or an error object (error objects don't have an ID)
+          localStorage.setItem('user', JSON.stringify(userData));
+          setUser(userData);
+        }
+      });
 
   };
 
