@@ -7,7 +7,7 @@ const PrivateRoute = (props) => {
   const params = useParams();
 
   return(
-    user.id === parseInt(params.id) ? props.element : <Navigate to="/" />
+    user ? user.id === parseInt(params.id) ? props.element : <Navigate to="/" /> : <Navigate to="/login" />
   )
 };
 
