@@ -8,6 +8,7 @@ import Login from './components/Login/Login';
 import UserContext from './components/Contexts/UserContext';
 import ProtectedRoute from './components/Routes/ProtectedRoute';
 import AuthRoute from './components/Routes/AuthRoute';
+import PrivateRoute from './components/Routes/PrivateRoute';
 import { useState } from 'react';
 import Profile from './components/Profile/Profile';
 
@@ -23,7 +24,7 @@ const App = () => {
           <Route exact path="/" element={<ProtectedRoute element={<Home />} />} />
           <Route exact path="/login" element={<AuthRoute element={<Login />} />} />
           <Route exact path="/signUp" element={<AuthRoute element={<SignUp />} />} />
-          <Route exact path="/user/:id" element={<ProtectedRoute element={<Profile />} />} />
+          <Route exact path="/user/:id" element={<PrivateRoute element={<Profile />} />} />
         </Routes>
       </UserContext.Provider>
     </Router>
