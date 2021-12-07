@@ -1,9 +1,12 @@
+import UserContext from '../Contexts/UserContext';
+import { useContext } from 'react';
 import { Navigate } from "react-router";
 
 const ProtectedRoute = (props) => {
+  const { user } = useContext(UserContext);
 
   return(
-    props.user? props.element : <Navigate to="/login "/>
+    user ? props.element : <Navigate to="/login "/>
   )
 };
 
