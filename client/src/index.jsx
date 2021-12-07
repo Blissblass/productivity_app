@@ -19,9 +19,9 @@ const App = () => {
       <UserContext.Provider value={{user, setUser}}>
         <NaviBar />
         <Routes>
-          <Route exact path="/" element={<ProtectedRoute element={<Home />} user={user} />} />
-          <Route exact path="/login" element={<AuthRoute element={<Login />} user={user} />} />
-          <Route exact path="/signUp" element={<AuthRoute element={<SignUp />} user={user} />} />
+          <Route exact path="/" element={<ProtectedRoute element={<Home />} />} />
+          <Route exact path="/login" element={<AuthRoute element={<Login />} />} />
+          <Route exact path="/signUp" element={<AuthRoute element={<SignUp />} />} />
         </Routes>
       </UserContext.Provider>
     </Router>
