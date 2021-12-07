@@ -21,7 +21,7 @@ const NavbarButtonUser = (props) => {
       </Link>
     </div>
     <div className="d-flex algin-items-center">
-      <Link to="/user">
+      <Link to={`/user/${user.id}`}>
         <h3 className="text-white m-1 ms-3">{user.username}</h3>
       </Link>
       <Link to="/login" onClick={handleSignOut}>
