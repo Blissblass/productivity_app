@@ -1,7 +1,12 @@
+const { useEffect } = require("react");
+const { useLocation } = require("react-router");
 
 const Profile = () => {
+  const location = useLocation();
 
-  fetch()
+  useEffect(() => {
+    console.log(location);
+  }, [location]);
 
   return(
     <div>
@@ -9,3 +14,5 @@ const Profile = () => {
     </div>
   )
 };
+
+export default Profile;
