@@ -1,12 +1,13 @@
-import { Spinner } from "react-bootstrap";
-
-const { useEffect, useState } = require("react");
-const { useParams } = require("react-router");
+import UserContext from '../Contexts/UserContext';
+import { useContext } from 'react';
+import { useEffect, useState } from "react";
+import { useParams } from "react-router";
 
 const Profile = () => {
   const params = useParams();
   const [isLoading, setLoading] = useState(true);
   const [userLists, setUserLists] = useState([]);
+  const { user } = useContext(UserContext);
 
   useEffect(() => {
     fetch(`/api/user_lists/${params.id}`)
@@ -23,7 +24,7 @@ const Profile = () => {
       <div className="spinner-border text-primary"></div>
     :
       <div>
-        <h1>{}</h1>
+        <h1>{user.username}</h1>
       </div>
   )
 };
