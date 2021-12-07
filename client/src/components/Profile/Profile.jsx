@@ -21,10 +21,12 @@ const Profile = () => {
 
   return(
     isLoading ? 
-      <div className="spinner-border text-primary"></div>
+      <div className="spinner-border text-primary d-block mx-auto mt-4" style={{height: 150, width: 150}}></div>
     :
-      <div>
-        <h1>{user.username}</h1>
+      <div className="container text-center">
+        <div className="card p-3 w-75 mt-4 mx-auto">
+          <h1>Welcome, {user.username}!</h1>
+        </div>
       </div>
   )
 };
