@@ -1,12 +1,14 @@
 const { useEffect } = require("react");
-const { useLocation } = require("react-router");
+const { useParams } = require("react-router");
 
 const Profile = () => {
-  const location = useLocation();
+  const params = useParams();
 
   useEffect(() => {
-    console.log(location);
-  }, [location]);
+    fetch(`/api/user_profile/${params.id}`)
+      .then(res => res.json())
+      .then(userData => console.log(userData))
+  }, [params]);
 
   return(
     <div>

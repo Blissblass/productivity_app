@@ -1,9 +1,9 @@
-class API::UserController < ApplicationController
+class Api::UserController < ApplicationController
 
   def fetch_user
     return { msg: "Please pass in a user id!" } unless params[:id]
 
-    @user = User.find(params[:id]).includes()
-    respond json: @user
+    @user = User.includes(:to_dos).find(params[:id])
+    render json: @user
   end
 end

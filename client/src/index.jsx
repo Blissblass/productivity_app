@@ -9,6 +9,7 @@ import UserContext from './components/Contexts/UserContext';
 import ProtectedRoute from './components/Routes/ProtectedRoute';
 import AuthRoute from './components/Routes/AuthRoute';
 import { useState } from 'react';
+import Profile from './components/Profile/Profile';
 
 const App = () => {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')))
@@ -22,6 +23,7 @@ const App = () => {
           <Route exact path="/" element={<ProtectedRoute element={<Home />} />} />
           <Route exact path="/login" element={<AuthRoute element={<Login />} />} />
           <Route exact path="/signUp" element={<AuthRoute element={<SignUp />} />} />
+          <Route exact path="/user/:id" element={<ProtectedRoute element={<Profile />} />} />
         </Routes>
       </UserContext.Provider>
     </Router>
