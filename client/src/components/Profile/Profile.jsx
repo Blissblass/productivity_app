@@ -2,6 +2,7 @@ import UserContext from '../Contexts/UserContext';
 import { useContext } from 'react';
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
+import Lists from '../Lists/Lists';
 import NoLists from '../NoLists/NoLists.jsx';
 
 const Profile = () => {
