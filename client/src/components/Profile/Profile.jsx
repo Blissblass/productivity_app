@@ -2,6 +2,7 @@ import UserContext from '../Contexts/UserContext';
 import { useContext } from 'react';
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
+import { Modal, Button} from 'react-bootstrap';
 
 const Profile = () => {
   const params = useParams();
@@ -24,8 +25,13 @@ const Profile = () => {
       <div className="spinner-border text-primary d-block mx-auto mt-4" style={{height: 150, width: 150}}></div>
     :
       <div className="container text-center">
-        <div className="card p-3 w-75 mt-4 mx-auto">
-          <h1>Welcome, {user.username}!</h1>
+        <h1 className="display-3 mt-2">Welcome, {user.username}!</h1>
+        <div>
+          { userLists ? 
+            null // Add rendering for userlists 
+          :
+            <NoLists />
+          }
         </div>
       </div>
   )
