@@ -8,8 +8,10 @@ const ListItem = (props) => {
   });
 
   return(
-    <div>
-      <h6>{title}</h6>
+    <div className="mt-3">
+      <div className="card w-75 mx-auto">
+        <h3>{title}</h3>
+      </div>
     </div>
   )
 };
