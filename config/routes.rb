@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   namespace :api do 
     get '/user_lists/:id', to: 'user#fetch_user_lists'
   end
+  resources :to_do, only: [:new, :create, :destroy, :edit, :update]
 end
