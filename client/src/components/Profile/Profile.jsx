@@ -28,7 +28,7 @@ const Profile = () => {
         <h1 className="display-3 mt-2">Welcome, {user.username}!</h1>
         <div>
           { userLists.length ? 
-            null // Add rendering for userlists 
+            <Lists lists={userLists} />
           :
             <NoLists />
           }
