@@ -12,7 +12,7 @@ const Lists = (props) => {
       <div>
         {lists.map(item => <ListItem key={item.id} title={item.name} />)}
       </div>
-      <NewListButton />
+      <NewListButton onClick={props.handleOpen} />
     </div>
   )
 };

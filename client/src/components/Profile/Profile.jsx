@@ -4,12 +4,16 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import Lists from '../Lists/Lists';
 import NoLists from '../NoLists/NoLists.jsx';
+import ListModal from '../ListModal/ListModal.jsx';
+
 
 const Profile = () => {
   const params = useParams();
   const [isLoading, setLoading] = useState(true);
   const [userLists, setUserLists] = useState([]);
+  const [show, setShow] = useState(false);
   const { user } = useContext(UserContext);
+  const handleOpen = () => setShow(true);
 
   useEffect(() => {
     fetch(`/api/user_lists/${params.id}`)
@@ -29,11 +33,12 @@ const Profile = () => {
         <h1 className="display-3 mt-2">Welcome, {user.username}!</h1>
         <div>
           { userLists.length ? 
-            <Lists lists={userLists} />
+            <Lists lists={userLists} handleOpen={handleOpen} />
           :
-            <NoLists />
+            <NoLists handleOpen={handleOpen} />
           }
         </div>
+        <ListModal show={show} setShow={setShow} handleOpen={handleOpen} />
       </div>
   )
 };

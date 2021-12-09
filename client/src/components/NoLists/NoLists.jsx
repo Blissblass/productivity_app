@@ -1,9 +1,7 @@
 import { useState } from "react";
-import ListModal from '../ListModal/ListModal.jsx';
 
-const NoLists = () => {
-  const [show, setShow] = useState(false);
-  const handleOpen = () => setShow(true);
+const NoLists = (props) => {
+
 
   
   return(
@@ -11,9 +9,8 @@ const NoLists = () => {
       <div>
         <h3>No To-Do's found!</h3>
         <input type="button" className="btn btn-primary w-25 p-2 text-white" value="Create a list now" 
-          onClick={handleOpen} />
+          onClick={props.handleOpen} />
       </div>
-      <ListModal show={show} setShow={setShow} handleOpen={handleOpen} />
     </div>
   );
 };
