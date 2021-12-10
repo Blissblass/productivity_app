@@ -8,10 +8,6 @@ const ListItem = (props) => {
   const { item, setUserLists } = props;
   const [editing, setEditing] = useState(false);
   const [editData, setEditData] = useState(item.name);
-  
-  useEffect(() => {
-    console.log(item.name);
-  });
 
   const handleDelete = () => {
     fetch(`/to_do/${item.id}`, {
@@ -21,6 +17,11 @@ const ListItem = (props) => {
   };
 
   const handleEdit = () => {
+    if(editData === item.name || !editData.length) {
+      setEditing(false);
+      return
+    }
+
     const data = {
       to_do: {
         name: editData
@@ -36,7 +37,14 @@ const ListItem = (props) => {
       body: JSON.stringify(data)
     })
       .then(res => res.json())
-      .then(data => console.log(data));
+      .then(data => {
+        if(data.id) {
+          item.name = data.name;
+          setEditing(false);
+        } else {
+          // handle errors
+        }
+      });
   };
 
   const handleToggle = () => setEditing(old => !old);
