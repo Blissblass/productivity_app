@@ -10,7 +10,9 @@ const ListItem = (props) => {
   });
 
   const handleDelete = () => {
-
+    fetch(`/to_do/${item.id}`, {
+      method: 'DELETE'
+    })  
   };
 
   return(
