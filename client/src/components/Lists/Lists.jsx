@@ -10,7 +10,7 @@ const Lists = (props) => {
     <div className="mt-4">
       <h1 className=''>View your lists:</h1>
       <div>
-        {lists.map(item => <ListItem key={item.id} title={item.name} />)}
+        {lists.map(item => <ListItem key={item.id} item={item} />)}
       </div>
       <NewListButton onClick={props.handleOpen} />
     </div>
