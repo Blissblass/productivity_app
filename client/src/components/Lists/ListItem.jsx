@@ -21,7 +21,7 @@ const ListItem = (props) => {
             <h3>{item.name}</h3>
           </div>
           <div>
-            <BsPencilSquare className="text-primary me-3" style={{fontSize: 30}} />
+            <BsPencilSquare className="text-primary me-3" style={{fontSize: 30, cursor:"pointer"}} />
             <CgTrashEmpty className="text-primary me-2" style={{fontSize: 35, cursor:"pointer"}} onClick={handleDelete} />
           </div>
         </div>
