@@ -33,7 +33,7 @@ const Profile = () => {
         <h1 className="display-3 mt-2">Welcome, {user.username}!</h1>
         <div>
           { userLists.length ? 
-            <Lists lists={userLists} handleOpen={handleOpen} />
+            <Lists lists={userLists} handleOpen={handleOpen} setUserLists={setUserLists} />
           :
             <NoLists handleOpen={handleOpen} />
           }

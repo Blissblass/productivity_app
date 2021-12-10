@@ -3,7 +3,7 @@ import { BsPencilSquare } from 'react-icons/bs';
 import { CgTrashEmpty } from 'react-icons/cg';
 
 const ListItem = (props) => {
-  const { item } = props;
+  const { item, setUserLists } = props;
   
   useEffect(() => {
     console.log(item.name);
@@ -12,7 +12,8 @@ const ListItem = (props) => {
   const handleDelete = () => {
     fetch(`/to_do/${item.id}`, {
       method: 'DELETE'
-    })  
+    })
+      .then(setUserLists(old => old.filter(listItem => listItem.id !== item.id )))
   };
 
   return(
