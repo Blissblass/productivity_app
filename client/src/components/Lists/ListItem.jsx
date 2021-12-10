@@ -1,9 +1,13 @@
+import { useState } from 'react';
 import { useEffect } from 'react';
 import { BsPencilSquare } from 'react-icons/bs';
 import { CgTrashEmpty } from 'react-icons/cg';
+import { AiOutlineCheck } from 'react-icons/ai';
 
 const ListItem = (props) => {
   const { item, setUserLists } = props;
+  const [editing, setEditing] = useState(false);
+  const [editData, setEditData] = useState(item.name);
   
   useEffect(() => {
     console.log(item.name);
@@ -16,15 +20,40 @@ const ListItem = (props) => {
       .then(setUserLists(old => old.filter(listItem => listItem.id !== item.id )))
   };
 
+  const handleEdit = () => {
+    const data = {
+      to_do: {
+        name: editData
+      }
+    }
+
+    fetch(`/to_do/${item.id}`, {
+      method: 'PATCH',     
+      headers: new Headers({
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      }),
+      body: JSON.stringify(data)
+    })
+      .then(res => res.json())
+      .then(data => console.log(data));
+  };
+
+  const handleToggle = () => setEditing(old => !old);
+
   return(
     <div className="mt-3">
       <div className="card w-50 mx-auto">
         <div className="d-flex justify-content-between align-items-center">
-          <div className="ms-3 mt-2">
-            <h3>{item.name}</h3>
+          <div className="ms-3 mt-2 d-flex align-items-center">
+            <h3 style={{display: editing ? "none" : "block"}}>{item.name}</h3>
+            <input type="text" className="form-control form-control-lg mb-2" value={editData} placeholder="Name..." 
+              style={{display: editing ? "block" : "none"}} onChange={(e) => setEditData(e.target.value)} />
+            <AiOutlineCheck className="text-primary ms-1 mb-2" 
+              style={{fontSize: 40, cursor:"pointer", display: editing ? "block" : "none"}} onClick={handleEdit} />  
           </div>
           <div>
-            <BsPencilSquare className="text-primary me-3" style={{fontSize: 30, cursor:"pointer"}} />
+            <BsPencilSquare className="text-primary me-3" style={{fontSize: 30, cursor:"pointer"}} onClick={handleToggle} />
             <CgTrashEmpty className="text-primary me-2" style={{fontSize: 35, cursor:"pointer"}} onClick={handleDelete} />
           </div>
         </div>

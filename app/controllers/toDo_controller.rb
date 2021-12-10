@@ -20,9 +20,9 @@ class ToDoController < ApplicationController
   def update 
     @to_do = ToDo.find(params[:id])
     if @to_do.update(to_do_params)
-      render json: @to_do 
+      render json: @to_do, status: 200
     else
-      render json: @to_do.errors.full_messages 
+      render json: @to_do.errors.full_messages, status: 422 
     end
   end
 
