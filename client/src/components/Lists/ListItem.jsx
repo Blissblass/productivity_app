@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { useEffect } from 'react';
 import { BsPencilSquare } from 'react-icons/bs';
 import { CgTrashEmpty } from 'react-icons/cg';
 import { AiOutlineCheck } from 'react-icons/ai';
