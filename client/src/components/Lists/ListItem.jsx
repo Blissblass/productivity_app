@@ -1,15 +1,13 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { BsPencilSquare } from 'react-icons/bs';
 import { CgTrashEmpty } from 'react-icons/cg';
 import { AiOutlineCheck } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
-import { useParams } from 'react-router';
 
 const ListItem = (props) => {
   const { item, setUserLists } = props;
   const [editing, setEditing] = useState(false);
   const [editData, setEditData] = useState(item.name);
-  const { id } = useParams();
 
   const handleDelete = () => {
     fetch(`/to_do/${item.id}`, {
