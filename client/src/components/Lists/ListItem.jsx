@@ -50,7 +50,7 @@ const ListItem = (props) => {
   const handleToggle = () => setEditing(old => !old);
 
   return(
-    <Link to={`list/${item.id}`}>
+    <Link to={`list/${item.id}`} style={{textDecoration: "none"}}>
       <div className="mt-3">
         <div className="card w-50 mx-auto">
           <div className="d-flex justify-content-between align-items-center">
