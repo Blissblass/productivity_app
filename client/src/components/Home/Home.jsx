@@ -1,6 +1,7 @@
 import UserContext from '../Contexts/UserContext';
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { BsJournals } from 'react-icons/bs';
 
 function Home() {
   const { user } = useContext(UserContext);
@@ -11,7 +12,9 @@ function Home() {
       <div>
         <p className="display-5 mt-5">Gain control today.</p>
         <Link to={`/user/${user.id}`}>
-        <input type="button" className="btn btn-primary btn-lg w-50 mt-3 text-white p-2" value="View your schedule" />
+          <button type="button" className="btn btn-primary btn-lg w-50 mt-3 text-white p-2" >
+            View your schedule <BsJournals className="mb-1 ms-1" />
+          </button>
         </Link>
       </div>
     </div>
