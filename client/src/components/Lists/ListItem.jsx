@@ -3,6 +3,7 @@ import { BsPencilSquare } from 'react-icons/bs';
 import { CgTrashEmpty } from 'react-icons/cg';
 import { AiOutlineCheck } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
+import { BsJournal } from 'react-icons/bs';
 
 const ListItem = (props) => {
   const { item, setUserLists } = props;
@@ -54,7 +55,10 @@ const ListItem = (props) => {
       <div className="card w-50 mx-auto">
         <div className="d-flex justify-content-between align-items-center">
           <div className="ms-3 mt-2 d-flex align-items-center">
-            <Link to={`list/${item.id}`}><h3 style={{display: editing ? "none" : "block"}}>{item.name}</h3></Link>
+            <Link to={`list/${item.id}`} className="d-flex align-items-center">
+              <BsJournal style={{fontSize: 25}} className="me-2 mb-1" />
+              <h3 style={{display: editing ? "none" : "block"}}>{item.name}</h3>
+            </Link>
             <input type="text" className="form-control form-control-lg mb-2" value={editData} placeholder="Name..." 
               style={{display: editing ? "block" : "none"}} onChange={(e) => setEditData(e.target.value)} />
             <AiOutlineCheck className="text-primary ms-3 mb-2" 
