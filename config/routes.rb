@@ -6,4 +6,5 @@ Rails.application.routes.draw do
     get 'todo/:id', to: 'to_do#fetch_list'
   end
   resources :to_do, only: [:new, :create, :destroy, :edit, :update]
+  resources :task, only: [:new, :create, :destroy, :edit, :update]
 end

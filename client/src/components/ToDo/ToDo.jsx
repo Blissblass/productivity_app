@@ -25,8 +25,8 @@ const ToDo = () => {
       { isLoading ? 
         <div className="spinner-border text-primary d-block mx-auto mt-4" style={{height: 150, width: 150}}></div>
       :
-        <div>
-          <div className="container text-center mt-3">
+        <div className="container text-center mt-3">
+          <div>
             <h1><ReactMarkdown children={`*${listData.list.name}*`}></ReactMarkdown></h1>
             <ReactMarkdown className="text-primary">---</ReactMarkdown>
           </div>
@@ -35,7 +35,7 @@ const ToDo = () => {
           listData.length ?
             null 
           :
-            <h1>No tasks found!</h1>  
+            <h1 className="mt-3"><em>No tasks found!</em></h1>  
           }
         </div>
       }
