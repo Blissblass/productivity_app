@@ -38,7 +38,7 @@ const Profile = () => {
             <NoLists handleOpen={handleOpen} />
           }
         </div>
-        <ListModal show={show} setShow={setShow} handleOpen={handleOpen} />
+        <ListModal show={show} setShow={setShow} handleOpen={handleOpen} setUserLists={setUserLists} />
       </div>
   )
 };

@@ -3,7 +3,7 @@ import UserContext from '../Contexts/UserContext';
 import { useContext } from 'react';
 
 const ListModal = (props) => {
-  const { show, setShow } = props;
+  const { show, setShow, setUserLists } = props;
   const { user } = useContext(UserContext);
 
   const handleClose = () => setShow(false);
@@ -31,6 +31,7 @@ const ListModal = (props) => {
       .then(listData => {
         e.target.children[0].value = null;
         console.log(listData);
+        setUserLists(old => [...old, listData])
         handleClose();
       });
   };
