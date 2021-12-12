@@ -9,7 +9,7 @@ const ToDo = () => {
 
   useEffect(() => {
     console.log(params);
-    fetch(`to_do/${params.list_id}`)
+    fetch(`/api/todo/${params.list_id}`)
       .then(res => res.json())
       .then(data => console.log(data));
   }, []);
