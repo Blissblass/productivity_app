@@ -11,6 +11,7 @@ import AuthRoute from './components/Routes/AuthRoute';
 import PrivateRoute from './components/Routes/PrivateRoute';
 import { useState } from 'react';
 import Profile from './components/Profile/Profile';
+import ToDo from './components/ToDo/ToDo';
 
 const App = () => {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')))
@@ -25,6 +26,7 @@ const App = () => {
           <Route exact path="/login" element={<AuthRoute element={<Login />} />} />
           <Route exact path="/signUp" element={<AuthRoute element={<SignUp />} />} />
           <Route exact path="/user/:id" element={<PrivateRoute element={<Profile />} />} />
+          <Route exact path="/user/:id/list/:list_id" element={<PrivateRoute element={<ToDo />} />} />  
         </Routes>
       </UserContext.Provider>
     </Router>
