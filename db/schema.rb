@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_12_161539) do
+ActiveRecord::Schema.define(version: 2021_12_13_231534) do
 
   create_table "tasks", force: :cascade do |t|
     t.text "description"
@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 2021_12_12_161539) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "status", default: false
+    t.integer "index", default: 0
   end
 
   create_table "to_dos", force: :cascade do |t|
