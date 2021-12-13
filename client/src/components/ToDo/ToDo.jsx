@@ -30,12 +30,12 @@ const ToDo = () => {
     if(!destination || destination.index === source.index) {
       return;
     }
-    setTaskData(old => {
-      const newTasks = [...taskData];
-      newTasks.splice(source.index, 1);
-      newTasks.splice(destination.index, 0, taskData.find(task => task.id === parseInt(draggableId)));
-      return newTasks;
-    });
+
+    const newTasks = [...taskData];
+    newTasks.splice(source.index, 1);
+    newTasks.splice(destination.index, 0, taskData.find(task => task.id === parseInt(draggableId)));
+    setTaskData(newTasks);
+    console.log(result);
   };
 
   return(

@@ -1,11 +1,18 @@
 import { BsTrash } from 'react-icons/bs';
+import { Droppable } from 'react-beautiful-dnd';
 
 const DeleteTask = () => {
 
   return(
-    <div className="position-fixed bg-danger p-4 rounded" style={{right:40, bottom:40}}>
-      <BsTrash className="text-white m-2" style={{fontSize:45}} />
-    </div>
+    <Droppable droppableId="drop-delete">
+      {provided => (
+        <div className="position-fixed bg-danger rounded" style={{right:40, bottom:40, height: 100, width: 100}} 
+            {...provided.droppableProps} ref={provided.innerRef}>
+          <BsTrash className="text-white mt-4" style={{fontSize:45}} />
+          {provided.placeholder}
+        </div>
+      )}
+    </Droppable>
   )
 };
 
