@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import ReactMarkdown from 'react-markdown';
 import { useParams } from 'react-router';
 import CreateTask from '../CreateTask/CreateTask';
+import TaskList from '../Task/TaskList';
 
 const ToDo = () => {
   const params = useParams();
@@ -30,10 +31,10 @@ const ToDo = () => {
             <h1><ReactMarkdown children={`*${listData.list.name}*`}></ReactMarkdown></h1>
             <ReactMarkdown className="text-primary">---</ReactMarkdown>
           </div>
-          <CreateTask />
+          <CreateTask postId={params.list_id} />
           { 
-          listData.length ?
-            null 
+          listData.tasks.length ?
+            <TaskList listData={listData} />
           :
             <h1 className="mt-3"><em>No tasks found!</em></h1>  
           }

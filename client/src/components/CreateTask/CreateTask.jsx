@@ -1,9 +1,27 @@
 import { BsJournalPlus } from 'react-icons/bs';
 
-const CreateTask = () => {
+const CreateTask = (props) => {
 
-  const handleSubmit = () => {
-    fetch('')
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const inputVal = e.currentTarget[0].value;
+    const data = {
+      task: {
+        description: inputVal,
+        to_do_id: props.postId
+      }
+    }
+
+    fetch('/task', {
+      method: 'POST',      
+      headers: new Headers({
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      }),
+      body: JSON.stringify(data)
+    })
+      .then(res => res.json())
+      .then(data => console.log(data));
   };
 
   return(
