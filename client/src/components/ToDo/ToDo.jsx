@@ -34,7 +34,14 @@ const ToDo = () => {
 
     return () => {
       const orderData = unmountData.current.map(ele => ({id: ele.id, index: unmountData.current.indexOf(ele)}));
-      console.log(orderData);
+      fetch('/api/reorder_list', {
+        method: 'POST',
+        headers: new Headers({
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        }),
+        body: JSON.stringify({orderData})
+      })
     }; 
   }, []);
 
