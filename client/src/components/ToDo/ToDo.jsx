@@ -4,10 +4,12 @@ import ReactMarkdown from 'react-markdown';
 import { useParams } from 'react-router';
 import CreateTask from '../CreateTask/CreateTask';
 import TaskList from '../Task/TaskList';
+import { DragDropContext } from 'react-beautiful-dnd';
 
 const ToDo = () => {
   const params = useParams();
-  const [listData, setListData] = useState({list: null, tasks: null});
+  const [listData, setListData] = useState({});
+  const [taskData, setTaskData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -16,7 +18,8 @@ const ToDo = () => {
       .then(res => res.json())
       .then(data => {
         console.log(data);
-        setListData(data);
+        setListData(data.list);
+        setTaskData(data.tasks);
         setIsLoading(false);
       });
   }, [params]);
@@ -28,13 +31,15 @@ const ToDo = () => {
       :
         <div className="container text-center mt-3">
           <div>
-            <h1><ReactMarkdown children={`*${listData.list.name}*`}></ReactMarkdown></h1>
+            <h1><ReactMarkdown children={`*${listData.name}*`}></ReactMarkdown></h1>
             <ReactMarkdown className="text-primary">---</ReactMarkdown>
           </div>
-          <CreateTask postId={params.list_id} />
+          <CreateTask postId={params.list_id} setTaskData={setTaskData} />
           { 
-          listData.tasks.length ?
-            <TaskList listData={listData} />
+          taskData.length ?
+            <DragDropContext>
+              <TaskList taskData={taskData} listId={params.list_id} />
+            </DragDropContext>
           :
             <h1 className="mt-3"><em>No tasks found!</em></h1>  
           }

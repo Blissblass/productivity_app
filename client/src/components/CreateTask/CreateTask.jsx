@@ -21,7 +21,10 @@ const CreateTask = (props) => {
       body: JSON.stringify(data)
     })
       .then(res => res.json())
-      .then(data => console.log(data));
+      .then(data => {
+        props.setTaskData(oldArr => [...oldArr, data]);
+        e.currentTarget[0].value = "";
+      });
   };
 
   return(
