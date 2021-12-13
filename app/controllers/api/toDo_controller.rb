@@ -8,4 +8,9 @@ class Api::ToDoController < ApplicationController
       render json: @to_do.errors.full_messages 
     end
   end
+
+  def reorder_list
+
+  end
+  
 end
