@@ -25,6 +25,19 @@ const ToDo = () => {
       });
   }, [params]);
 
+  const handleDrag = (result) => {
+    const { destination, source, draggableId } = result;
+    if(!destination || destination.index === source.index) {
+      return;
+    }
+    setTaskData(old => {
+      const newTasks = [...taskData];
+      newTasks.splice(source.index, 1);
+      newTasks.splice(destination.index, 0, taskData.find(task => task.id === parseInt(draggableId)));
+      return newTasks;
+    });
+  };
+
   return(
     <div>
       { isLoading ? 
@@ -39,10 +52,10 @@ const ToDo = () => {
           { 
           taskData.length ?
             <div>
-              <DragDropContext>
+              <DragDropContext onDragEnd={handleDrag}>
                 <TaskList taskData={taskData} listId={params.list_id} />
+                <DeleteTask />
               </DragDropContext>
-              <DeleteTask />
             </div>
           :
             <h1 className="mt-3"><em>No tasks found!</em></h1>  
