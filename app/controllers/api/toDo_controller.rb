@@ -10,7 +10,10 @@ class Api::ToDoController < ApplicationController
   end
 
   def reorder_list
-
+    params[:orderData].each do |task_item|
+      task = Task.find(task_item.id)
+      task.update()
+    end
   end
-  
+
 end
