@@ -7,7 +7,7 @@ function Home() {
   const { user } = useContext(UserContext);
 
   return (
-    <div className="container text-center">
+    <div className="container text-center mt-5">
       <h1 className="mt-4" style={{fontSize: 55}}>Welcome to Nook.io! </h1>
       <div>
         <p className="display-5 mt-5">Gain control today.</p>

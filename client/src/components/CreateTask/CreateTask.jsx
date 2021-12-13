@@ -25,7 +25,7 @@ const CreateTask = (props) => {
   };
 
   return(
-    <div className="mx-auto w-75 p-2">
+    <div className="mx-auto w-75 mb-4">
         <div >
           <form className="d-flex align-items-center justify-content-center" onSubmit={handleSubmit}>
             <input type="text" className="form-control form-control-lg w-75 me-3" placeholder="Add a new task..." required />
