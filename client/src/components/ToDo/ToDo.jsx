@@ -27,15 +27,24 @@ const ToDo = () => {
 
   const handleDrag = (result) => {
     const { destination, source, draggableId } = result;
-    if(!destination || destination.index === source.index) {
+    const newTasks = [...taskData];
+    
+    if(!destination || (destination.index === source.index && destination.droppableId !== "drop-delete")) {
       return;
     }
 
-    const newTasks = [...taskData];
+    if(destination.droppableId === "drop-delete") {
+      setTaskData(old => old.filter(ele => ele.id !== parseInt(draggableId)));
+      fetch(`/task/${draggableId}`, {
+        method: 'DELETE'
+      });
+      return;
+    } 
+
+
     newTasks.splice(source.index, 1);
     newTasks.splice(destination.index, 0, taskData.find(task => task.id === parseInt(draggableId)));
     setTaskData(newTasks);
-    console.log(result);
   };
 
   return(
