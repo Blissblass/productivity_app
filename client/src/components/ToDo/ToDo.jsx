@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useLayoutEffect, useState } from 'react';
 import { useEffect } from 'react';
 import ReactMarkdown from 'react-markdown';
 import { useParams } from 'react-router';
@@ -6,24 +6,37 @@ import CreateTask from '../CreateTask/CreateTask';
 import TaskList from '../Task/TaskList';
 import { DragDropContext } from 'react-beautiful-dnd';
 import DeleteTask from '../DeleteTask/DeleteTask';
+import { useRef } from 'react';
 
 const ToDo = () => {
   const params = useParams();
   const [listData, setListData] = useState({});
   const [taskData, setTaskData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const unmountData = useRef();
 
   useEffect(() => {
-    console.log(params);
     fetch(`/api/todo/${params.list_id}`)
       .then(res => res.json())
       .then(data => {
-        console.log(data);
         setListData(data.list);
         setTaskData(data.tasks);
         setIsLoading(false);
       });
   }, [params]);
+
+  useEffect(() => {
+    unmountData.current = taskData;
+  }, [taskData]);
+
+  useLayoutEffect(() => {
+    console.log("mounting!");
+
+    return () => {
+      const orderData = unmountData.current.map(ele => ({id: ele.id, index: unmountData.current.indexOf(ele)}));
+      console.log(orderData);
+    }; 
+  }, []);
 
   const handleDrag = (result) => {
     const { destination, source, draggableId } = result;
