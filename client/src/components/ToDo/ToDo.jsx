@@ -5,6 +5,7 @@ import { useParams } from 'react-router';
 import CreateTask from '../CreateTask/CreateTask';
 import TaskList from '../Task/TaskList';
 import { DragDropContext } from 'react-beautiful-dnd';
+import DeleteTask from '../DeleteTask/DeleteTask';
 
 const ToDo = () => {
   const params = useParams();
@@ -37,9 +38,12 @@ const ToDo = () => {
           <CreateTask postId={params.list_id} setTaskData={setTaskData} />
           { 
           taskData.length ?
-            <DragDropContext>
-              <TaskList taskData={taskData} listId={params.list_id} />
-            </DragDropContext>
+            <div>
+              <DragDropContext>
+                <TaskList taskData={taskData} listId={params.list_id} />
+              </DragDropContext>
+              <DeleteTask />
+            </div>
           :
             <h1 className="mt-3"><em>No tasks found!</em></h1>  
           }
