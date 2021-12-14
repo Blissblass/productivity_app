@@ -6,7 +6,7 @@ const Task = (props) => {
 
   const handleComplete = () => {
     setDone(old => !old);
-    
+    fetch(`/api/toggle_status/${task.id}`);
   };
 
   return(
