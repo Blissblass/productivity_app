@@ -11,13 +11,7 @@ const TaskList = (props) => {
         <div {...provided.droppableProps} ref={provided.innerRef}>
           <ul className="list-group list-group-flush text-start w-50 mx-auto">
             { taskData.map((taskItem, idx) => (
-              <Draggable key={taskItem.id} draggableId={`${taskItem.id}`} index={idx}>
-                {provided => (
-                  <div {...provided.dragHandleProps} {...provided.draggableProps} ref={provided.innerRef}>
-                    <Task key={taskItem.id} task={taskItem} /> 
-                  </div>
-                )}
-              </Draggable>
+              <Task key={taskItem.id} task={taskItem} idx={idx} /> 
             ))}
           </ul>
           {provided.placeholder}
