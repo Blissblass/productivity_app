@@ -1,6 +1,5 @@
 import Task from '../Task/Task';
 import { Droppable } from 'react-beautiful-dnd';
-import { Draggable } from 'react-beautiful-dnd';
 
 const TaskList = (props) => {
   const { taskData } = props;
