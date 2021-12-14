@@ -34,19 +34,27 @@ const ToDo = () => {
     console.log("mounting!");
 
     return () => {
-      const orderData = {};
-
-      unmountData.current.forEach(ele => orderData[ele.id] = {index: unmountData.current.indexOf(ele)});
-      fetch('/api/reorder_list', {
-        method: 'POST',
-        headers: new Headers({
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        }),
-        body: JSON.stringify({to_do: {orderData}})
-      })
+      handleLeave();
     }; 
   }, []);
+
+  window.onbeforeunload = () => { // Add handling for refresh, as useEffect doesn't cover it. (React only resets the state on refresh)
+    handleLeave();
+  }
+
+  const handleLeave = () => {
+    const orderData = {};
+
+    unmountData.current.forEach(ele => orderData[ele.id] = {index: unmountData.current.indexOf(ele)});
+    fetch('/api/reorder_list', {
+      method: 'POST',
+      headers: new Headers({
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      }),
+      body: JSON.stringify({to_do: {orderData}})
+    })
+  }
 
   const handleDrag = (result) => {
     const { destination, source, draggableId } = result;

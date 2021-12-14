@@ -6,6 +6,10 @@ const Task = (props) => {
 
   const handleComplete = () => {
     setDone(old => !old);
+    console.log(done);
+    const newTask = {...task};
+    newTask.status = done;
+    console.log(newTask);
   };
 
   return(
