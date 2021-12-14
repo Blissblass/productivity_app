@@ -1,13 +1,14 @@
+import { useState } from 'react';
 import { BsJournalPlus } from 'react-icons/bs';
 
 const CreateTask = (props) => {
+  const [input, setInput] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const inputVal = e.currentTarget[0].value;
     const data = {
       task: {
-        description: inputVal,
+        description: input,
         to_do_id: props.postId
       }
     }
@@ -23,6 +24,7 @@ const CreateTask = (props) => {
       .then(res => res.json())
       .then(data => {
         props.setTaskData(oldArr => [...oldArr, data]);
+        setInput("");
       });
   };
 
@@ -30,7 +32,8 @@ const CreateTask = (props) => {
     <div className="mx-auto w-75 mb-4">
         <div >
           <form className="d-flex align-items-center justify-content-center" onSubmit={handleSubmit}>
-            <input type="text" className="form-control form-control-lg w-75 me-3" placeholder="Add a new task..." required />
+            <input type="text" className="form-control form-control-lg w-75 me-3" placeholder="Add a new task..." required 
+              onChange={e => setInput(e.target.value)} value={input} />
             <button type="submit" style={{backgroundColor: "transparent", border: "none"}}>
               <BsJournalPlus style={{fontSize: 37, cursor: "pointer"}} className="text-primary" />
             </button>
