@@ -33,14 +33,16 @@ const ToDo = () => {
     console.log("mounting!");
 
     return () => {
-      const orderData = unmountData.current.map(ele => ({id: ele.id, index: unmountData.current.indexOf(ele)}));
+      const orderData = {};
+
+      unmountData.current.forEach(ele => orderData[ele.id] = {index: unmountData.current.indexOf(ele)});
       fetch('/api/reorder_list', {
         method: 'POST',
         headers: new Headers({
           'Content-Type': 'application/json',
           'Accept': 'application/json'
         }),
-        body: JSON.stringify({orderData})
+        body: JSON.stringify({to_do: {orderData}})
       })
     }; 
   }, []);
