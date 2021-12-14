@@ -6,6 +6,7 @@ import NaviBar from './components/Navbar/Navibar.jsx';
 import SignUp from './components/SignUp/SignUp';
 import Login from './components/Login/Login';
 import UserContext from './components/Contexts/UserContext';
+import ErrorContext from './components/Contexts/ErrorContext';
 import ProtectedRoute from './components/Routes/ProtectedRoute';
 import AuthRoute from './components/Routes/AuthRoute';
 import PrivateRoute from './components/Routes/PrivateRoute';
@@ -14,20 +15,23 @@ import Profile from './components/Profile/Profile';
 import ToDo from './components/ToDo/ToDo';
 
 const App = () => {
-  const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')))
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')));
+  const [errors, setErrors] = useState([]);
 
   return(
   <div>
     <Router>
       <UserContext.Provider value={{user, setUser}}>
-        <NaviBar />
-        <Routes>
-          <Route exact path="/" element={<ProtectedRoute element={<Home />} />} />
-          <Route exact path="/login" element={<AuthRoute element={<Login />} />} />
-          <Route exact path="/signUp" element={<AuthRoute element={<SignUp />} />} />
-          <Route exact path="/user/:id" element={<PrivateRoute element={<Profile />} />} />
-          <Route exact path="/user/:id/list/:list_id" element={<PrivateRoute element={<ToDo />} />} />  
-        </Routes>
+        <ErrorContext.Provider value={{errors, setErrors}}>
+          <NaviBar />
+          <Routes>
+            <Route exact path="/" element={<ProtectedRoute element={<Home />} />} />
+            <Route exact path="/login" element={<AuthRoute element={<Login />} />} />
+            <Route exact path="/signUp" element={<AuthRoute element={<SignUp />} />} />
+            <Route exact path="/user/:id" element={<PrivateRoute element={<Profile />} />} />
+            <Route exact path="/user/:id/list/:list_id" element={<PrivateRoute element={<ToDo />} />} />  
+          </Routes>
+        </ErrorContext.Provider>
       </UserContext.Provider>
     </Router>
   </div>
