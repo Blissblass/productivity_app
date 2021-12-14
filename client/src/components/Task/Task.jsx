@@ -10,7 +10,7 @@ const Task = (props) => {
   };
 
   return(
-    <li className="list-group-item list-group-item-primary m-1" onDoubleClick={handleComplete}>
+    <li className="list-group-item list-group-item-primary m-1" onClick={handleComplete}>
       { done ? 
         <h4 className="m-1"><del>{task.description}</del></h4>
       :
