@@ -1,6 +1,4 @@
+import { createContext } from "react";
 
-const ErrorContext = () => {
-
-};
-
+const ErrorContext = createContext(null);
 export default ErrorContext;
