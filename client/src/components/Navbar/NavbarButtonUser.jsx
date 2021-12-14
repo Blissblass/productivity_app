@@ -15,7 +15,7 @@ const NavbarButtonUser = (props) => {
     <div>
       <Link to="/">
         <div className="d-flex align-items-center">
-          <h2 className="navbar-brand m-1 ms-3" style={{fontSize: 30}}>Nook.io</h2>
+          <h2 className="navbar-brand m-1 ms-3" style={{fontSize: 30}}>Task.io</h2>
           <RiLeafLine className="text-white ms-1" style={{fontSize: 30}} />
         </div>
       </Link>

@@ -12,21 +12,19 @@ const Task = (props) => {
   };
 
   return(
-
-
-  <Draggable key={task.id} draggableId={`${task.id}`} index={idx}>
-    {provided => (
-      <div {...provided.dragHandleProps} {...provided.draggableProps} ref={provided.innerRef}>
-        <li className="list-group-item list-group-item-primary m-1" onClick={handleComplete}>
-          { done ? 
-            <h4 className="m-1"><del>{task.description}</del></h4>
-          :
-            <h4 className="m-1">{task.description}</h4>
-          }
-        </li>
-      </div>
-    )}
-  </Draggable>
+    <Draggable key={task.id} draggableId={`${task.id}`} index={idx}>
+      {provided => (
+        <div {...provided.dragHandleProps} {...provided.draggableProps} ref={provided.innerRef}>
+          <li className="list-group-item list-group-item-primary m-1" onClick={handleComplete}>
+            { done ? 
+              <h4 className="m-1"><del>{task.description}</del></h4>
+            :
+              <h4 className="m-1">{task.description}</h4>
+            }
+          </li>
+        </div>
+      )}
+    </Draggable>
   )
 };
 
