@@ -34,7 +34,7 @@ class TaskController < ApplicationController
   private 
 
   def task_params 
-    params.require(:task).permit(:description, :to_do_id, :order) 
-    # No need to send up a status parameter, as it's set to FALSE by default
+    params.require(:task).permit(:description, :to_do_id, :order, :status, :index) 
+    # Set status parameter now, as we're starting to handle completion for front end
   end
 end
