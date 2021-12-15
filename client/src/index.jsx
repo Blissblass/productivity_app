@@ -13,6 +13,7 @@ import PrivateRoute from './components/Routes/PrivateRoute';
 import { useState } from 'react';
 import Profile from './components/Profile/Profile';
 import ToDo from './components/ToDo/ToDo';
+import Errors from './components/Errors/Errors';
 
 const App = () => {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')));
@@ -24,6 +25,7 @@ const App = () => {
       <UserContext.Provider value={{user, setUser}}>
         <ErrorContext.Provider value={{errors, setErrors}}>
           <NaviBar />
+          <Errors />
           <Routes>
             <Route exact path="/" element={<ProtectedRoute element={<Home />} />} />
             <Route exact path="/login" element={<AuthRoute element={<Login />} />} />
