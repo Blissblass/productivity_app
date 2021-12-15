@@ -1,10 +1,12 @@
 import { Modal, Button } from "react-bootstrap";
 import UserContext from '../Contexts/UserContext';
+import ErrorContext from "../Contexts/ErrorContext";
 import { useContext } from 'react';
 
 const ListModal = (props) => {
   const { show, setShow, setUserLists } = props;
   const { user } = useContext(UserContext);
+  const { setErrors } = useContext(ErrorContext);
 
   const handleClose = () => setShow(false);
   
@@ -29,10 +31,16 @@ const ListModal = (props) => {
     })
       .then(res => res.json())
       .then(listData => {
-        e.target.children[0].value = null;
-        console.log(listData);
-        setUserLists(old => [...old, listData])
-        handleClose();
+        if(listData.id) { // Has different error handling, check for id here instead
+          e.target.children[0].value = null;
+          console.log(listData);
+          setUserLists(old => [...old, listData])
+          handleClose();
+        } else {
+          handleClose();
+          console.log(listData);
+          listData.forEach(error => setErrors(old => [...old, error]));
+        }
       });
   };
 
