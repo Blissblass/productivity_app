@@ -45,7 +45,7 @@ const ListModal = (props) => {
   };
 
   return(
-    <Modal show={show} onHide={handleClose} className="mt-3">
+    <Modal show={show} onHide={handleClose} className="" centered>
       <Modal.Header closeButton>
         <Modal.Title>Create a new To-Do</Modal.Title>
       </Modal.Header>

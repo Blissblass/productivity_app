@@ -1,13 +1,13 @@
 import { useContext } from 'react';
 import ErrorContext from '../Contexts/ErrorContext';
+import ErrorPopup from './ErrorPopup';
 
 const Errors = () => {
-  const { errors, setErrors } = useContext(ErrorContext);
+  const { errors } = useContext(ErrorContext);
 
   return(
-    <div>
-      <p>Errors</p>
-      {errors.map(error => <p>{error}</p>)}
+    <div className="position-absolute bottom-0 ms-3">
+      {errors.map((error, idx) => <ErrorPopup error={error} key={idx} />)}
     </div>
   )
 };
