@@ -1,8 +1,11 @@
 import { useContext } from 'react';
 import UserContext from '../Contexts/UserContext';
+import ErrorContext from '../Contexts/ErrorContext';
+
 
 const SignUp = (props) => {
   const { setUser } = useContext(UserContext);
+  const { setErrors } = useContext(ErrorContext);
 
   const handleSignUp = (e) => {
     e.preventDefault();
@@ -28,11 +31,16 @@ const SignUp = (props) => {
       .then(res => res.json())
       .then(userData => {
         console.log(userData);
-        if(userData.id) { // Check if server returned a user object or an error object (error objects don't have an ID)
+        if(userData.errors) { // Check if server returned an error
+          for(let error in userData.errors ) {
+            console.log(`${error} ${userData.errors[error]}`);
+            setErrors(old => [...old, `${error} ${userData.errors[error]}`])
+          }
+        } else {
           localStorage.setItem('user', JSON.stringify(userData));
           setUser(userData);
         }
-      });
+      })
 
   };
 
