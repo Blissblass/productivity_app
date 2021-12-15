@@ -7,6 +7,7 @@ const Errors = () => {
   return(
     <div>
       <p>Errors</p>
+      {errors.map(error => <p>{error}</p>)}
     </div>
   )
 };

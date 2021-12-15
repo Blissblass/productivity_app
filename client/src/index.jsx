@@ -17,7 +17,7 @@ import Errors from './components/Errors/Errors';
 
 const App = () => {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')));
-  const [errors, setErrors] = useState([]);
+  const [errors, setErrors] = useState([]); // Errors will be an array of strings
 
   return(
   <div>
