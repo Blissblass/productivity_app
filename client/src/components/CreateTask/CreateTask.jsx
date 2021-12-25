@@ -13,7 +13,7 @@ const CreateTask = (props) => {
       }
     }
 
-    fetch('/task', {
+    fetch('https://taskio-backend.herokuapp.com/task', {
       method: 'POST',      
       headers: new Headers({
         'Content-Type': 'application/json',

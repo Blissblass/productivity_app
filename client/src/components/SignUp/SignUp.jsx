@@ -20,7 +20,7 @@ const SignUp = (props) => {
       }
     }
 
-    fetch('/users', {
+    fetch('https://taskio-backend.herokuapp.com/users', {
       method: 'POST',
       headers: new Headers({
         'Content-Type': 'application/json',

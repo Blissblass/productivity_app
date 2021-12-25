@@ -16,7 +16,7 @@ const Profile = () => {
   const handleOpen = () => setShow(true);
 
   useEffect(() => {
-    fetch(`/api/user_lists/${params.id}`)
+    fetch(`https://taskio-backend.herokuapp.com/api/user_lists/${params.id}`)
       .then(res => res.json())
       .then(userData => {
         console.log(userData)

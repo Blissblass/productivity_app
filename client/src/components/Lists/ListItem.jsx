@@ -11,7 +11,7 @@ const ListItem = (props) => {
   const [editData, setEditData] = useState(item.name);
 
   const handleDelete = () => {
-    fetch(`/to_do/${item.id}`, {
+    fetch(`https://taskio-backend.herokuapp.com/to_do/${item.id}`, {
       method: 'DELETE'
     })
       .then(setUserLists(old => old.filter(listItem => listItem.id !== item.id )))
@@ -29,7 +29,7 @@ const ListItem = (props) => {
       }
     }
 
-    fetch(`/to_do/${item.id}`, {
+    fetch(`https://taskio-backend.herokuapp.com/to_do/${item.id}`, {
       method: 'PATCH',     
       headers: new Headers({
         'Content-Type': 'application/json',

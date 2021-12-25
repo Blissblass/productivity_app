@@ -16,7 +16,7 @@ const ToDo = () => {
   const unmountData = useRef();
 
   useEffect(() => {
-    fetch(`/api/todo/${params.list_id}`)
+    fetch(`https://taskio-backend.herokuapp.com/api/todo/${params.list_id}`)
       .then(res => res.json())
       .then(data => {
         console.log(data);
@@ -46,7 +46,7 @@ const ToDo = () => {
     const orderData = {};
 
     unmountData.current.forEach(ele => orderData[ele.id] = {index: unmountData.current.indexOf(ele)});
-    fetch('/api/reorder_list', {
+    fetch('https://taskio-backend.herokuapp.com/api/reorder_list', {
       method: 'POST',
       headers: new Headers({
         'Content-Type': 'application/json',
@@ -66,7 +66,7 @@ const ToDo = () => {
 
     if(destination.droppableId === "drop-delete") {
       setTaskData(old => old.filter(ele => ele.id !== parseInt(draggableId)));
-      fetch(`/task/${draggableId}`, {
+      fetch(`https://taskio-backend.herokuapp.com/task/${draggableId}`, {
         method: 'DELETE'
       });
       return;

@@ -21,7 +21,7 @@ const ListModal = (props) => {
       }
     }
 
-    fetch('/to_do', {
+    fetch('https://taskio-backend.herokuapp.com/to_do', {
       method: 'POST',      
       headers: new Headers({
         'Content-Type': 'application/json',

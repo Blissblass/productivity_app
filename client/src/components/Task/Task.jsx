@@ -8,7 +8,7 @@ const Task = (props) => {
 
   const handleComplete = () => {
     setDone(old => !old);
-    fetch(`/api/toggle_status/${task.id}`);
+    fetch(`https://taskio-backend.herokuapp.com/api/toggle_status/${task.id}`);
   };
 
   return(
