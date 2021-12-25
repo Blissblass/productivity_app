@@ -7,7 +7,7 @@
 
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
-    origins 'https://blissblass.github.io/productivity_app'
+    origins 'https://blissblass.github.io'
 
     resource '*',
       headers: :any,
