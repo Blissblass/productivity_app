@@ -19,7 +19,6 @@ const ToDo = () => {
     fetch(`https://taskio-backend.herokuapp.com/api/todo/${params.list_id}`)
       .then(res => res.json())
       .then(data => {
-        console.log(data);
         setListData(data.list);
         setTaskData(data.tasks);
         setIsLoading(false);
@@ -31,7 +30,6 @@ const ToDo = () => {
   }, [taskData]);
 
   useLayoutEffect(() => {
-    console.log("mounting!");
 
     return () => {
       handleLeave();

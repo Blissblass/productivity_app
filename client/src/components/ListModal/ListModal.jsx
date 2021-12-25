@@ -33,12 +33,10 @@ const ListModal = (props) => {
       .then(listData => {
         if(listData.id) { // Has different error handling, check for id here instead
           e.target.children[0].value = null;
-          console.log(listData);
           setUserLists(old => [...old, listData])
           handleClose();
         } else {
           handleClose();
-          console.log(listData);
           listData.forEach(error => setErrors(old => [...old, error]));
         }
       });

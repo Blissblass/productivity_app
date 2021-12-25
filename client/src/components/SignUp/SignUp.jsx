@@ -30,10 +30,8 @@ const SignUp = (props) => {
     })
       .then(res => res.json())
       .then(userData => {
-        console.log(userData);
         if(userData.errors) { // Check if server returned an error
           for(let error in userData.errors ) {
-            console.log(`${error} ${userData.errors[error]}`);
             setErrors(old => [...old, `${error} ${userData.errors[error]}`])
           }
         } else {

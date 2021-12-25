@@ -19,7 +19,6 @@ const Profile = () => {
     fetch(`https://taskio-backend.herokuapp.com/api/user_lists/${params.id}`)
       .then(res => res.json())
       .then(userData => {
-        console.log(userData)
         setUserLists(userData);
         setLoading(false);
       })

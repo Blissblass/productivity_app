@@ -27,7 +27,6 @@ const Login = (props) => {
     })
       .then(res => res.json())
       .then(userData => {
-        console.log(userData); 
         if(userData.error) { // Check if server returned a user object or an error object (error objects don't have an ID)
           setErrors(old => [...old, userData.error]);
         } else {
