@@ -9,7 +9,7 @@ class Api::ToDoController < ApplicationController
     end
   end
 
-    def reorder_list
+  def reorder_list
     order_data = params[:to_do][:orderData]
     Task.update(order_data.keys, order_data.values)
   end
