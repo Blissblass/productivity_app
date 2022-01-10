@@ -115,7 +115,8 @@ However, I soon realised that React doesn't unmount the component when the user 
 
 # To Do
 
-Changing the style of a Task item when it's being dragged would be a nice way to communicate the action to a user. Also shortening the width when its about to be dropped into the Droppable for deletion is a feature that I'm planning on adding in the future.
+Changing the style of a Task item when it's being dragged would be a reliable way to communicate the action to a user.
+Shortening the width of a draggableItem when its hovered over a Droppable for deletion is a feature that I'm planning on adding in the future, as an indicator for this would be an effective way for communicating the action to the user.
 
 # Technologies used
 
