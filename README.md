@@ -4,7 +4,9 @@
 
 ![Home page of task.io](https://i.imgur.com/1SNhlQ3.png)
 
-Task.io is a personal project I did outside of any App Academy or The Odin Project courses. My goal for this project was to create a form of Scheduling app where you can create Lists, and then create draggable Tasks for a List so that you can reorder them. I initially wrote some of the code for this myself, but then decided to use react-beautiful-dnd as it was much more efficient and also had better accessibility features.
+[Check out the demo here](https://erayalkis.github.io/productivity_app)
+
+Task.io is a personal project I created with my goal being to create a form of Scheduling app where you can create Lists, and then create draggable Tasks for a List so that you can reorder them. I initially wrote some of the code for this myself, but then decided to use react-beautiful-dnd as it was much more efficient and also had better accessibility features.
 
 # Challenges
 
