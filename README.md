@@ -8,6 +8,7 @@
 
 Task.io is a personal project I created with my goal being to create a form of Scheduling app where you can create Lists, and then create draggable Tasks for a List so that you can reorder them. I initially wrote some of the code for this myself, but then decided to use react-beautiful-dnd as it was much more efficient and also had better accessibility features.
 
+
 # Challenges
 
 One major problem i faced while building Task.io was getting the Tasks to be draggable. I first started by writing code for this myself, but the problem turned out to be much more complex than I first thought. After trying for a day or two, I decided to instead use an already available package for it. 
